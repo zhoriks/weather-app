@@ -5,15 +5,17 @@ import './Form.css';
 class NameForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {value: '', isLoaded: false };
+    this.state = {value: '', isLoaded: false, clothes: ''};
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleReset = this.handleReset.bind(this);
+    this.clothesHelps = this.clothesHelps.bind(this);
   }
 
   handleChange(event) {
     this.setState({value: event.target.value});
+    this.setState({ clothes: "" });
     if (event.target.value.length) {
       this.setState ({isLoaded: false});
     }
@@ -27,7 +29,7 @@ class NameForm extends React.Component {
     event.preventDefault();
 
     try {
-      const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.value}&appid=9190638005eccb8c3ab7c13acd670d43&lang=ru&units=metric`)
+      const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.value}&appid=9190638005eccb8c3ab7c13acd670d43&lang=ru&units=metric`)
       const result = await response.json()
       await this.setState({ 
         city: result.name, 
@@ -35,11 +37,30 @@ class NameForm extends React.Component {
         temp: result.main.temp,
         humidity: result.main.humidity, 
         wind: result.wind.speed, 
-        isLoaded: true })
+        isLoaded: true });
+      await this.clothesHelps()
     } catch (err) {
         this.setState({ error: err})
     }
-  }
+  };
+
+  clothesHelps() {
+    if (this.state.weather === ("дождь" || "небольшой дождь")) {
+      this.setState({clothes: "Возьмите зонт"})
+    } 
+    else if ((this.state.temp >= 18)) {
+      this.setState({clothes: "На улице тепло :)"})
+    }
+    else if (((this.state.temp <= 17) && (this.state.temp >= 0))) {
+      this.setState({clothes: "На улице прохладно, утеплитесь"})
+    }
+    else if (this.state.temp < 0) {
+      this.setState({clothes: "На улице холодно! Оденьтесь тепло!"})
+    }
+    else if (this.state.temp < -30) {
+      this.setState({clothes: "На улице очень холодно! Останьтесь дома!"})
+    }
+  };
 
   render() {
     const { error, isLoaded } = this.state
@@ -57,6 +78,7 @@ class NameForm extends React.Component {
           <input className="form__button" type="submit" value="Узнать" />
         </form>
         {isLoaded && <Information city={this.state.city} weather={this.state.weather} temp={this.state.temp} humidity={this.state.humidity} wind={this.state.wind}/> }
+        <div className="helper">{this.state.clothes}</div>
       </main>
     );
   }

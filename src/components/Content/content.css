@@ -2,3 +2,9 @@
     max-width: 600px;
     margin: auto;
 }
+
+@media (max-width: 480px) {
+    .content {
+        max-width: 350px;
+    }
+}

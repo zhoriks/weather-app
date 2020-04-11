@@ -27,3 +27,26 @@
     display: inline-block;
     font-size: 20px;
 }
+
+@media screen and (max-width: 480px) and (min-width: 321px) {
+    .form__input {
+        margin: 0px 30px;
+        margin-top: 10px;
+        
+    }
+    .form__text {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 320 px) {
+    .form__input {
+        margin: 0px 23px;
+        
+    }
+    .form__text {
+        display: block;
+        margin: 0px 20px;
+    }
+}

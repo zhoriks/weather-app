@@ -1,7 +1,6 @@
 import * as React from 'react'
 import './Information.css';
 
-
 function Information(props) {
     return (
         <section className="information">
