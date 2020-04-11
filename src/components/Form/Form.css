@@ -1,3 +1,29 @@
-.Form {
-    margin: auto auto;
+.form {
+    margin-top: 15vh;
+}
+
+.form__input {
+    margin: 0 15px;
+    border-radius: 2px;
+    border: 2px solid #ccc;
+    padding: 4px 0;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.form__button {
+    width: 73px;
+    height: 30px;
+    font-size: 15px;
+    border-radius: 3px;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    background-color: #7eb8da;
+    color: #000;
+}
+
+.form__text {
+    display: inline-block;
+    font-size: 20px;
 }

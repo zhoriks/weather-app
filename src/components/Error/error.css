@@ -1,0 +1,23 @@
+.error {
+    max-width: 430px;
+    margin: auto;
+}
+
+.error__text {
+    display: inline-block;
+    font-size: 20px;
+    margin-top: 15vh;
+    margin-right: 15px;
+}
+
+.error__button {
+    width: 73px;
+    height: 30px;
+    font-size: 15px;
+    border-radius: 3px;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    background-color: #7eb8da;
+    color: #000;
+}

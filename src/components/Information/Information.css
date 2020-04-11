@@ -1,0 +1,13 @@
+.information {
+    max-width: 600px;
+    margin-top: 20px;
+}
+
+.information__text {
+    border: 2px solid #ccc;
+}
+
+.information__text:nth-child(even) {
+    border-top: none;
+    border-bottom: none;
+}

@@ -16,6 +16,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "author": "Georgy Pogorelov",
+  "license": "ISC",
   "eslintConfig": {
     "extends": "react-app"
   },
