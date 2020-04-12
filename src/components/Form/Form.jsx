@@ -46,8 +46,7 @@ class NameForm extends React.Component {
     }
   };
 
-  clothesHelps() {
-    
+  async clothesHelps() {    
     if ((this.state.weather === "дождь" || this.state.weather === "небольшой дождь") && (this.state.temp >= 18)) {
       this.setState({clothes: "На улице тепло, но возьмите зонт"})
     }
