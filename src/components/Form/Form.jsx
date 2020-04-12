@@ -1,6 +1,8 @@
 import * as React from 'react'
 import Information from '../Information/Information' 
-import './Form.css';
+import Helper from '../Helper/Helper'
+import Error from '../Error/Error'  
+import './form.css';
 
 class NameForm extends React.Component {
   constructor(props) {
@@ -15,8 +17,8 @@ class NameForm extends React.Component {
 
   handleChange(event) {
     this.setState({value: event.target.value});
-    this.setState({ clothes: "" });
-    if (event.target.value.length) {
+    if ((event.target.value.length) || (event.target.value.length === 0)) {
+      this.setState({ clothes: "" });
       this.setState ({isLoaded: false});
     }
   }
@@ -45,12 +47,16 @@ class NameForm extends React.Component {
   };
 
   clothesHelps() {
-    if (this.state.weather === ("дождь" || "небольшой дождь")) {
-      this.setState({clothes: "Возьмите зонт"})
-    } 
+    
+    if ((this.state.weather === "дождь" || this.state.weather === "небольшой дождь") && (this.state.temp >= 18)) {
+      this.setState({clothes: "На улице тепло, но возьмите зонт"})
+    }
     else if ((this.state.temp >= 18)) {
       this.setState({clothes: "На улице тепло :)"})
     }
+    else if (this.state.weather === ("дождь" || "небольшой дождь")) {
+      this.setState({clothes: "Возьмите зонт"})
+    } 
     else if (((this.state.temp <= 17) && (this.state.temp >= 0))) {
       this.setState({clothes: "На улице прохладно, утеплитесь"})
     }
@@ -59,16 +65,15 @@ class NameForm extends React.Component {
     }
     else if (this.state.temp < -30) {
       this.setState({clothes: "На улице очень холодно! Останьтесь дома!"})
-    }
+    } 
   };
 
   render() {
     const { error, isLoaded } = this.state
     if (error) {
-      return <div className="error">
-        <div className="error__text">Такой город отыскать не удалось :(</div>
-        <button className="error__button" onClick={this.handleReset}>Еще</button>
-      </div>
+      return (
+        <Error handleReset={this.handleReset}/>
+      )
     }
     return (
       <main className="content">
@@ -78,7 +83,7 @@ class NameForm extends React.Component {
           <input className="form__button" type="submit" value="Узнать" />
         </form>
         {isLoaded && <Information city={this.state.city} weather={this.state.weather} temp={this.state.temp} humidity={this.state.humidity} wind={this.state.wind}/> }
-        <div className="helper">{this.state.clothes}</div>
+        <Helper clothes={this.state.clothes}/>
       </main>
     );
   }
