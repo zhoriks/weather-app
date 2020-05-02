@@ -1,24 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import rootReducer from './reducers'
-import { store }from './store'
+// import { createStore } from 'redux'
+// import rootReducer from './reducers'
+import { store } from './store'
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
-// const initialState = {
-//   information: {
-//     isLoaded: false
-//   }
-// }
-
-// const store = createStore(rootReducer, initialState)
-
-
-
-//console.log(store.getState())
 
 ReactDOM.render(
   <Provider store={store}>
