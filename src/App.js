@@ -1,11 +1,11 @@
 import * as React from 'react';
-import Form from'./components/Form/Form';
+import FormContainer from'./container/FormContainer';
 import './vendor/normalize.css';
 import './App.css';
 
 function App() {
   return (
-    <Form />
+    <FormContainer />
   );
 }
 

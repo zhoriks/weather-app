@@ -2,9 +2,10 @@ import { createStore } from 'redux';
 import reducer from './reducers';
 
 const initialState = {
-  information: {
+  form: {
     isLoaded: false,
-    recommendation: ''
+    recommendation: '',
+    value: ''
   }
 }
 

@@ -1,29 +1,35 @@
-const information = (state={}, action) => {
+const form = (state={}, action) => {
   switch (action.type) {
     case 'LOAD_INFORMATION':
       return {
         ...state,
         isLoaded: action.payload.isLoaded,
-        recommendation: action.payload.recommendation
+        recommendation: action.payload.recommendation,
+        result: action.payload.result
       };
     case 'SET_RECOMMENDATION':
       return {
         ...state,
         recommendation: action.payload
       };
-    case 'SET_RESULT':
+    case 'SET_CHANGE':
       return {
         ...state,
-        result: action.payload
+        value: action.payload.value
       };
-    case 'SET_WEATHER':
+    case 'SUBMIT__VALUE':
       return {
         ...state,
-        weather: action.payload
+        value: action.payload
+      };
+    case 'SET_ERROR':
+      return {
+        ...state,
+        error: action.payload.error
       };
     default:
       return state
   }
 }
 
-export default information  
+export default form

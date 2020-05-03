@@ -4,8 +4,8 @@ import Information from '../Information/Information'
 import Helper from '../Helper/Helper'
 import Error from '../Error/Error' 
 
+
 function Form (props) {
-  console.log(props)
     if (props.error) {
         return (
           <Error handleReset={props.handleReset}/>
@@ -20,8 +20,14 @@ function Form (props) {
 
           <input className="form__button" type="submit" value="Узнать" />
         </form>
-        {props.isLoaded && <Information props={props.result}/>}
-
+        {props.isLoaded && <Information 
+          city={props.result.name}
+          weather={props.result.weather[0].description}
+          temp={props.result.main.temp}
+          humidity={props.result.main.humidity}
+          wind={props.result.wind.speed}
+        />}
+  
         {props.isLoaded && <Helper clothes={props.recommendation}/>}
 
       </main>
